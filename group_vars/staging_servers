@@ -1,0 +1,4 @@
+owner: Timur
+environment: Stage
+ansible_user: ubuntu
+ansible_ssh_private_key_file: /home/catalina/.ssh/mykey.pem

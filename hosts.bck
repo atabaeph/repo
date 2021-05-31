@@ -1,0 +1,26 @@
+[staging_db]
+192.168.5.1
+192.168.5.2
+
+[staging_web]
+192.168.2.1
+192.168.2.2
+
+[staging_app]
+192.168.3.1
+192.168.3.2
+
+[staging_all:children]
+staging_db
+staging_web
+staging_app
+
+[staging_servers]
+aws_ubuntu1 ansible_host=aws2 ansible_user=ubuntu ansible_ssh_private_key_file=/home/catalina/.ssh/mykey.pem
+
+[prod_servers]
+aws_ubuntu2 ansible_host=aws1
+
+[prod_servers:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/home/catalina/.ssh/mykey.pem

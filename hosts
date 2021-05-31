@@ -1,0 +1,5 @@
+[staging_servers]
+aws_ubuntu1 ansible_host=aws2
+
+[prod_servers]
+aws_ubuntu2 ansible_host=aws1
