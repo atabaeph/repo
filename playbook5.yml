@@ -1,0 +1,12 @@
+- name: Loops Playboook
+  hosts: aws_ubuntu1
+  become: yes
+  
+  tasks:
+    - name: Say hello to all
+      debug: msg = "Hello {{ item }}"
+      loop:
+        - "vasya"
+        - "petya"
+        - "masha"
+        - "olya"

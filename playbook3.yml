@@ -1,0 +1,30 @@
+- name: Playbook variables
+  hosts: all
+  become: yes
+
+  vars:
+    message1: privet
+    message2: kak dela?
+    secret: 123
+
+  tasks:
+    - name: Print secret variable
+      debug:
+        var: secret
+
+    - debug: 
+        msg: "soobshenie: {{ privet }}"
+
+    - debug:
+        msg: "soobshenie: {{ message2 }}"
+
+    - set_fact: full_message_var = "{{ message1 }} {{ message2 }}"
+
+    - debug:
+        var: full_message_var
+
+    - shell: uptime
+      register: result
+
+    - debug:
+        var: result

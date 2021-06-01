@@ -1,5 +1,7 @@
 [staging_servers]
-aws_ubuntu1 ansible_host=aws2
+aws_ubuntu1 ansible_host=192.168.11.129 ansible_user=kuber ansible_ssh_pass=123
+aws_ubuntu3 ansible_host=18.190.156.11
 
 [prod_servers]
-aws_ubuntu2 ansible_host=aws1
+aws_ubuntu2 ansible_host=18.224.82.136
+

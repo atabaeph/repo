@@ -1,0 +1,28 @@
+- name: Install, copy page and run nginx web-server
+  hosts: all
+  become: yes
+
+  vars:      #defining variables
+    source_file: ./mywebsite/index.html
+    destin_file: /var/www/html/
+
+  tasks:
+    - name: install apache for Ubuntu
+      apt: name=apache2 state=latest
+      when: ansible_os_family == "Ubuntu"
+
+    - name: install apache for RedHat
+      yum: name=httpd state=latest
+      when: ansible_os_family == "RedHat"
+
+    - name: copy webpage to web-server
+      copy: src={{ source_file }} dest={{ destin_file }} mode=0555   #using variables and jinja
+
+    - name: start apache in Ubuntu and make it enable
+      service: name=apache2 state=started enabled=yes
+      when: ansible_os_family == "Ubuntu"
+
+    - name: start apache in RedHat and make it enable
+      wervice: name=httpd state=started enabled=yes
+      when: ansible_os_family == "RedHat"
+
